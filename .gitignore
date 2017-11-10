@@ -3,5 +3,6 @@
 .*.d
 .*.swp
 seikoslp.rastertolabel
+*.ppd
 ID
 tags
