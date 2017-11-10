@@ -32,8 +32,10 @@
 */
 
 #include <cups/cups.h>
+#include <cups/ppd.h>
 #include <cups/raster.h>
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -98,7 +100,7 @@ void ResetSignal(void)
 
 
 /*  Compute the indent for the printer we're printing to. */
-int ComputeIndent(cups_page_header_t &header)
+int ComputeIndent(cups_page_header2_t &header)
 {
 	if (0 == gPrinterModel)
 	{
@@ -255,7 +257,7 @@ void PreparePrinter()
 
 
 /*  'StartPage()' - Start a page of graphics. */
-void StartPage(cups_page_header_t &header)
+void StartPage(cups_page_header2_t &header)
 {
 	DEBUG_FUNC;
 
@@ -290,7 +292,7 @@ void StartPage(cups_page_header_t &header)
 }
 
 
-void PageToBitmap(int pageNum, cups_raster_t *ras, cups_page_header_t &header, BitMap &oBitmap)
+void PageToBitmap(int pageNum, cups_raster_t *ras, cups_page_header2_t &header, BitMap &oBitmap)
 {
 	std::vector<unsigned char> bitmapvector;
 
@@ -379,7 +381,7 @@ void DumpArgs(int argc, char *argv[])
 /*  Output a localized error to standard error to be picked up by CUPS.  This is a "public" error. */
 void OutputStringToCUPS(SInt32 id, SInt32 i1, SInt32 i2)
 {
-	char *master = NULL;
+	const char *master = NULL;
 	char result[128] = "";
 
 	/*  At the end of each case "result" will contain a message for CUPS. */
@@ -612,11 +614,11 @@ int main(int argc, char *argv[])
 	PreparePrinter();
 
 	int pageNum = 0;
-	cups_page_header_t  header = /*  Page header from file */
+	cups_page_header2_t  header = /*  Page header from file */
 	{
 		0
 	};
-	while (cupsRasterReadHeader(ras, &header))
+	while (cupsRasterReadHeader2(ras, &header))
 	{
 
 		/*  Write a status message with the page number and number of copies. */
