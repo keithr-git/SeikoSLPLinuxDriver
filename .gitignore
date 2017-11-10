@@ -1,0 +1,7 @@
+.exrc
+*.o
+.*.d
+.*.swp
+seikoslp.rastertolabel
+ID
+tags
