@@ -113,6 +113,9 @@ int ComputeIndent(cups_page_header2_t &header)
 	switch (gPrinterModel)
 	{
 		case kSeikoInstrumentsSLPProProductID:
+			/*  7.8 dots == 1 mm, 8 dots == 1 byte */
+			marginInMM = (int) ((marginInDots + 7) / 15.6);
+			break;
 		case kSeikoInstrumentsSLP100ProductID:
 		case kSeikoInstrumentsSLP200ProductID:
 		case kSeikoInstrumentsSLP240ProductID:
@@ -229,18 +232,18 @@ void PreparePrinter()
 
 	switch (gPrinterModel)
 	{
-		case kSeikoInstrumentsSLPProProductID:
 		case kSeikoInstrumentsSLP100ProductID:
 			gDotsPerLine = 192;
 			break;
+		case kSeikoInstrumentsSLPProProductID:
 		case kSeikoInstrumentsSLP200ProductID:
 		case kSeikoInstrumentsSLP240ProductID:
-        case kSeikoInstrumentsSLP620ProductID:
+		case kSeikoInstrumentsSLP620ProductID:
 			gDotsPerLine = 384;
 			break;
 		case kSeikoInstrumentsSLP440ProductID:
 		case kSeikoInstrumentsSLP450ProductID:
-        case kSeikoInstrumentsSLP650ProductID:
+		case kSeikoInstrumentsSLP650ProductID:
 			gDotsPerLine = 576;
 			break;
 		default:
@@ -249,8 +252,7 @@ void PreparePrinter()
 			break;
 	}
 
-	if (kSeikoInstrumentsSLP100ProductID == gPrinterModel ||
-                kSeikoInstrumentsSLPProProductID == gPrinterModel)
+	if (kSeikoInstrumentsSLP100ProductID == gPrinterModel)
 	{
 		SendPrinterReset();
 	}
@@ -278,8 +280,8 @@ void StartPage(cups_page_header2_t &header)
 			break;
 		case kSeikoInstrumentsSLP440ProductID:
 		case kSeikoInstrumentsSLP450ProductID:
-        case kSeikoInstrumentsSLP620ProductID:
-        case kSeikoInstrumentsSLP650ProductID:
+		case kSeikoInstrumentsSLP620ProductID:
+		case kSeikoInstrumentsSLP650ProductID:
 			if (gFineMode)
 			{
 				SendPrinterCommand(SLP_CMD_SETSPEED, 0x02);
