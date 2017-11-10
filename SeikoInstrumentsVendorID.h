@@ -24,6 +24,7 @@
 
 #define kSeikoInstrumentsUSBVendorID            0x0619
 
+#define kSeikoInstrumentsSLPProProductID        0x00ff
 #define kSeikoInstrumentsSLP240ProductID        0x0105
 #define kSeikoInstrumentsSLP100ProductID        0x0103
 #define kSeikoInstrumentsSLP200ProductID        0x0104

@@ -27,8 +27,7 @@
 *% Driver-defined attributes...
 *APPrinterIconPath: "/Library/Printers/SII/rastertosiislp.app/Contents/Resources/DriverIcons/slp410.icns"
 *cupsVersion: 1.5
-*% Pretending it's an SLP100 seems to work.
-*cupsModelNumber: 259
+*cupsModelNumber: 255
 *cupsManualCopies: False
 *cupsFilter: "application/vnd.cups-raster 0 /usr/lib/cups/filter/seikoslp.rastertolabel"
 *cupsLanguages: "en"

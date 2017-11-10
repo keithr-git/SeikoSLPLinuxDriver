@@ -112,16 +112,17 @@ int ComputeIndent(cups_page_header2_t &header)
 
 	switch (gPrinterModel)
 	{
+		case kSeikoInstrumentsSLPProProductID:
 		case kSeikoInstrumentsSLP100ProductID:
 		case kSeikoInstrumentsSLP200ProductID:
 		case kSeikoInstrumentsSLP240ProductID:
-        case kSeikoInstrumentsSLP620ProductID:
+		case kSeikoInstrumentsSLP620ProductID:
 			/*  8 dots == 1 mm, 8 dots == 1 byte */
 			marginInMM = (int) ((marginInDots + 7) / 16);
 			break;
 		case kSeikoInstrumentsSLP440ProductID:
 		case kSeikoInstrumentsSLP450ProductID:
-        case kSeikoInstrumentsSLP650ProductID:
+		case kSeikoInstrumentsSLP650ProductID:
 			/*  11.811 dots == 1 mm, 8 dots == 1 byte */
 			marginInMM = (int) ((marginInDots + 7) / 23.622);
 			break;
@@ -222,11 +223,13 @@ void PreparePrinter()
 		gPrinterModel = ppdFile->model_number;
 
 		DEBUG_S("model_number is %d", ppdFile->model_number);
+
 		ppdClose(ppdFile);
 	}
 
 	switch (gPrinterModel)
 	{
+		case kSeikoInstrumentsSLPProProductID:
 		case kSeikoInstrumentsSLP100ProductID:
 			gDotsPerLine = 192;
 			break;
@@ -246,7 +249,8 @@ void PreparePrinter()
 			break;
 	}
 
-	if (kSeikoInstrumentsSLP100ProductID == gPrinterModel)
+	if (kSeikoInstrumentsSLP100ProductID == gPrinterModel ||
+                kSeikoInstrumentsSLPProProductID == gPrinterModel)
 	{
 		SendPrinterReset();
 	}
@@ -266,6 +270,7 @@ void StartPage(cups_page_header2_t &header)
 
 	switch (gPrinterModel)
 	{
+		case kSeikoInstrumentsSLPProProductID:
 		case kSeikoInstrumentsSLP100ProductID:
 		case kSeikoInstrumentsSLP200ProductID:
 		case kSeikoInstrumentsSLP240ProductID:
@@ -398,6 +403,10 @@ void OutputStringToCUPS(SInt32 id, SInt32 i1, SInt32 i2)
 
 			switch (gPrinterModel)
 			{
+				case kSeikoInstrumentsSLPProProductID:
+					sprintf(result, master, "SLPPro/2000");
+					break;
+
 				case kSeikoInstrumentsSLP100ProductID:
 					sprintf(result, master, "SLP100/410");
 					break;
@@ -471,6 +480,10 @@ void OutputStringToCUPS(SInt32 id, SInt32 i1, SInt32 i2)
 
 			switch (gPrinterModel)
 			{
+				case kSeikoInstrumentsSLPProProductID:
+					result = CFStringCreateWithFormat(NULL, NULL, master, CFSTR("SLPPro/2000"));
+					break;
+
 				case kSeikoInstrumentsSLP100ProductID:
 					result = CFStringCreateWithFormat(NULL, NULL, master, CFSTR("SLP100/410"));
 					break;
@@ -540,6 +553,7 @@ void ParseSelectedUserOptions(char *argv5)
 	if (contains(argv5, "Density=LowQuality"))
 	{
         switch (gPrinterModel) {
+            case kSeikoInstrumentsSLPProProductID:
             case kSeikoInstrumentsSLP100ProductID:
             case kSeikoInstrumentsSLP200ProductID:
             case kSeikoInstrumentsSLP240ProductID:

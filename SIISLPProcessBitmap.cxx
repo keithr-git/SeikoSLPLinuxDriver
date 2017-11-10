@@ -179,16 +179,17 @@ long SIISLPProcessBitmap::GetMaxDotsPerLine(long & maxDotsPerLine)
 
 	switch (mUSBPID)
 	{
-        case kSeikoInstrumentsSLP650ProductID:
+		case kSeikoInstrumentsSLP650ProductID:
 		case kSeikoInstrumentsSLP440ProductID:
 		case kSeikoInstrumentsSLP450ProductID:
 			maxDotsPerLine = 576;
 			break;
-        case kSeikoInstrumentsSLP620ProductID:
+		case kSeikoInstrumentsSLP620ProductID:
 		case kSeikoInstrumentsSLP200ProductID:
 		case kSeikoInstrumentsSLP240ProductID:
 			maxDotsPerLine = 384;
 			break;
+		case kSeikoInstrumentsSLPProProductID:
 		case kSeikoInstrumentsSLP100ProductID:
 			maxDotsPerLine = 192;
 			break;
@@ -253,8 +254,8 @@ long SIISLPProcessBitmap::PrintPrepare(long width)
 
 		switch (mUSBPID)
 		{
-            case kSeikoInstrumentsSLP650ProductID:
-            case kSeikoInstrumentsSLP620ProductID:
+			case kSeikoInstrumentsSLP650ProductID:
+			case kSeikoInstrumentsSLP620ProductID:
 			case kSeikoInstrumentsSLP440ProductID:
 			case kSeikoInstrumentsSLP450ProductID:
 				if (marginInDots <= 255)
@@ -273,8 +274,10 @@ long SIISLPProcessBitmap::PrintPrepare(long width)
 			case kSeikoInstrumentsSLP200ProductID:
 			case kSeikoInstrumentsSLP240ProductID:
 			case kSeikoInstrumentsSLP100ProductID:
+			case kSeikoInstrumentsSLPProProductID:
 				/*
-				 * The older printers contain a bug when the CMD_INDENT command is used in combination with the CMD_TAB command
+				 * The older printers contain a bug when the CMD_INDENT command
+				 * is used in combination with the CMD_TAB command
 				 * so on the older printers, we only use CMD_MARGIN.
 				 * 8 pixels = 1mm on the older SLP printers
 				 */
