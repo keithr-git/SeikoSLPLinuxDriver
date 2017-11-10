@@ -44,21 +44,20 @@ $(program): $(objects)
 $(ppdfiles): %.ppd: %.ppd.in
 	sed -e 's%@@CUPS_FILTER@@%$(filterdir)/$(program)%' < $@.in > $@
 
-install: build
-	cp $(program) "$(filterdir)/"
+install: $(filterdir)/$(program) $(patsubst %, $(ppddir)/%.gz, $(ppdfiles))
+
+$(filterdir)/$(program): $(program)
+	cp $(program) "$@"
+
+$(ppddir)/%.gz: % | $(ppddir)
+	gzip -9 -c $* > "$(ppddir)/$*.gz"
+
+$(ppddir):
 	mkdir -p "$(ppddir)"
-	gzip -c siislppro.ppd > "$(ppddir)/siislppro.ppd.gz"
-	gzip -c siislp100.ppd > "$(ppddir)/siislp100.ppd.gz"
-	gzip -c siislp200.ppd > "$(ppddir)/siislp200.ppd.gz"
-	gzip -c siislp240.ppd > "$(ppddir)/siislp240.ppd.gz"
-	gzip -c siislp440.ppd > "$(ppddir)/siislp440.ppd.gz"
-	gzip -c siislp450.ppd > "$(ppddir)/siislp450.ppd.gz"
-	gzip -c siislp620.ppd > "$(ppddir)/siislp620.ppd.gz"
-	gzip -c siislp650.ppd > "$(ppddir)/siislp650.ppd.gz"
 
 uninstall:
 	rm -rfv "$(ppddir)"
-	rm -rfv "$(filterdir)/$(program)"
+	rm -fv "$(filterdir)/$(program)"
 
 clean:
 	rm -f $(program) $(objects) *~
