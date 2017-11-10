@@ -68,6 +68,8 @@ uninstall:
 clean:
 	rm -f $(program) *.o *~
 	rm -f *.gz
+
+clobber:
 	rm -rf "$(ppddir)"
 	rm -rf "$(mfdir)/pretty"
 
