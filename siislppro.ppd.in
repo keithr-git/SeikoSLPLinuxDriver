@@ -26,7 +26,8 @@
 *TTRasterizer: Type42
 *% Driver-defined attributes...
 *cupsVersion: 1.5
-*cupsModelNumber: 255
+*% The printer works the same as the SLP240, but with slightly different resolution.
+*cupsModelNumber: 261
 *cupsManualCopies: False
 *cupsFilter: "application/vnd.cups-raster 0 /usr/lib/cups/filter/seikoslp.rastertolabel"
 *cupsLanguages: "en"
@@ -152,7 +153,7 @@
 *OpenUI *Resolution/Resolution: PickOne
 *OrderDependency: 10 AnySetup *Resolution
 *DefaultResolution: 203dpi
-*Resolution 203dpi/203 DPI: "<</HWResolution[203 203]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+*Resolution 203dpi/203 DPI: "<</HWResolution[198 203]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
 *CloseUI: *Resolution
 *OpenGroup: SIISLPOptions/SIISLPOptions
 *OpenUI *Density/Output Quality: PickOne
