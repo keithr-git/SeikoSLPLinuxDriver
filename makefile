@@ -32,6 +32,7 @@ build:
 	make clean
 	$(CXX) -o $(program) $(cflags) *.cxx $(ldflags)
 	# set up the filter directory in the ppd correctly.
+	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislppro.ppd
 	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp100.ppd
 	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp200.ppd
 	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp240.ppd
@@ -40,6 +41,7 @@ build:
 	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp620.ppd
 	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp650.ppd
 	# set up the icon directory in the ppd correctly.
+	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislppro.ppd
 	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp100.ppd
 	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp200.ppd
 	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp240.ppd
@@ -52,6 +54,7 @@ install:
 	make build
 	mv $(program) "$(filterdir)/"
 	mkdir "$(ppddir)"
+	gzip -c siislppro.ppd >> siislppro.ppd.gz
 	gzip -c siislp100.ppd >> siislp100.ppd.gz
 	gzip -c siislp200.ppd >> siislp200.ppd.gz
 	gzip -c siislp240.ppd >> siislp240.ppd.gz
