@@ -1,5 +1,5 @@
 *PPD-Adobe: "4.3"
-*%%%% PPD file for SLP650/SLP650SE with CUPS.
+*%%%% PPD file for SLP450 with CUPS.
 *%%%% Created by the CUPS PPD Compiler CUPS v1.5.3.
 *% Seiko Instruments Inc Smart Label Printer PPD file for
 *% the Common UNIX Printing System (CUPS).
@@ -10,12 +10,12 @@
 *FileVersion: "1.8"
 *LanguageVersion: English
 *LanguageEncoding: ISOLatin1
-*PCFileName: "siislp650.ppd"
-*Product: "(SII SLP650)"
+*PCFileName: "siislp450.ppd"
+*Product: "(SII SLP450)"
 *Manufacturer: "SII"
-*ModelName: "SII SLP650/SLP650SE"
-*ShortNickName: "SII SLP650/SLP650SE"
-*NickName: "SII SLP650/SLP650SE, 1.8"
+*ModelName: "SII SLP450"
+*ShortNickName: "SII SLP450"
+*NickName: "SII SLP450, 1.8"
 *PSVersion: "(3010.000) 550"
 *LanguageLevel: "3"
 *ColorDevice: False
@@ -25,9 +25,8 @@
 *LandscapeOrientation: Plus90
 *TTRasterizer: Type42
 *% Driver-defined attributes...
-*APPrinterIconPath: "/Library/Printers/SII/rastertosiislp.app/Contents/Resources/DriverIcons/slp650.icns"
 *cupsVersion: 1.5
-*cupsModelNumber: 294
+*cupsModelNumber: 1282
 *cupsManualCopies: False
 *cupsFilter: "application/vnd.cups-raster 0 /usr/lib/cups/filter/seikoslp.rastertolabel"
 *cupsLanguages: "en"
@@ -206,4 +205,4 @@
 *Font Times-Roman: Standard "(1.05)" Standard ROM
 *Font ZapfChancery-MediumItalic: Standard "(1.05)" Standard ROM
 *Font ZapfDingbats: Special "(001.005)" Special ROM
-*% End of siislp650.ppd, 14340 bytes.
+*% End of siislp450.ppd, 14305 bytes.

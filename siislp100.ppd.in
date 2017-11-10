@@ -1,5 +1,5 @@
 *PPD-Adobe: "4.3"
-*%%%% PPD file for SLPPro/2000 with CUPS.
+*%%%% PPD file for SLP100/410 with CUPS.
 *%%%% Created by the CUPS PPD Compiler CUPS v1.5.3.
 *% Seiko Instruments Inc Smart Label Printer PPD file for
 *% the Common UNIX Printing System (CUPS).
@@ -10,12 +10,12 @@
 *FileVersion: "1.8"
 *LanguageVersion: English
 *LanguageEncoding: ISOLatin1
-*PCFileName: "siislppro.ppd"
-*Product: "(SII SLPPro)"
+*PCFileName: "siislp100.ppd"
+*Product: "(SII SLP100)"
 *Manufacturer: "SII"
-*ModelName: "SII SLPPro/2000"
-*ShortNickName: "SII SLPPro/2000"
-*NickName: "SII SLPPro/2000, 1.8"
+*ModelName: "SII SLP100/410"
+*ShortNickName: "SII SLP100/410"
+*NickName: "SII SLP100/410, 1.8"
 *PSVersion: "(3010.000) 550"
 *LanguageLevel: "3"
 *ColorDevice: False
@@ -25,9 +25,8 @@
 *LandscapeOrientation: Plus90
 *TTRasterizer: Type42
 *% Driver-defined attributes...
-*APPrinterIconPath: "/Library/Printers/SII/rastertosiislp.app/Contents/Resources/DriverIcons/slp410.icns"
 *cupsVersion: 1.5
-*cupsModelNumber: 255
+*cupsModelNumber: 259
 *cupsManualCopies: False
 *cupsFilter: "application/vnd.cups-raster 0 /usr/lib/cups/filter/seikoslp.rastertolabel"
 *cupsLanguages: "en"
@@ -138,4 +137,4 @@
 *Font Times-Roman: Standard "(1.05)" Standard ROM
 *Font ZapfChancery-MediumItalic: Standard "(1.05)" Standard ROM
 *Font ZapfDingbats: Special "(001.005)" Special ROM
-*% End of siislppro.ppd, 07572 bytes.
+*% End of siislp100.ppd, 07572 bytes.

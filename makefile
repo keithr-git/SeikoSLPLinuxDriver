@@ -23,61 +23,49 @@
 
 mfdir     := $(shell pwd)
 program   := seikoslp.rastertolabel
+sources   := DriverUtils.cxx RasterToSIISLP.cxx SIISLPProcessBitmap.cxx
+objects   := $(sources:%.cxx=%.o)
+depends   := $(sources:%.cxx=.%.d)
+ppdfiles  := siislp100.ppd siislp200.ppd siislp240.ppd siislp440.ppd \
+	     siislp450.ppd siislp620.ppd siislp650.ppd siislppro.ppd
 ppddir    := $(shell cups-config --datadir)/model/seiko
 filterdir := $(shell cups-config --serverbin)/filter
 cflags    := $(shell cups-config --ldflags --cflags)
 ldflags   := $(shell cups-config --image --libs)
 
-build:
-	make clean
-	$(CXX) -o $(program) $(cflags) *.cxx $(ldflags)
-	# set up the filter directory in the ppd correctly.
-	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislppro.ppd
-	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp100.ppd
-	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp200.ppd
-	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp240.ppd
-	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp440.ppd
-	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp450.ppd
-	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp620.ppd
-	perl -p -i -e 's(^.cupsFilter.*\Z) <*cupsFilter: "application/vnd.cups-raster 0 $(filterdir)/$(program)">g' siislp650.ppd
-	# set up the icon directory in the ppd correctly.
-	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislppro.ppd
-	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp100.ppd
-	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp200.ppd
-	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp240.ppd
-	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp440.ppd
-	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp450.ppd
-	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp620.ppd
-	perl -p -i -e "s#\(^.APPrinterIconPath.*\$\)\n##g" siislp650.ppd
+build: $(program) $(ppdfiles)
 
-install:
-	make build
-	mv $(program) "$(filterdir)/"
-	mkdir "$(ppddir)"
-	gzip -c siislppro.ppd >> siislppro.ppd.gz
-	gzip -c siislp100.ppd >> siislp100.ppd.gz
-	gzip -c siislp200.ppd >> siislp200.ppd.gz
-	gzip -c siislp240.ppd >> siislp240.ppd.gz
-	gzip -c siislp440.ppd >> siislp440.ppd.gz
-	gzip -c siislp450.ppd >> siislp450.ppd.gz
-	gzip -c siislp620.ppd >> siislp620.ppd.gz
-	gzip -c siislp650.ppd >> siislp650.ppd.gz
-	mv *.ppd.gz "$(ppddir)"
+$(program): $(objects)
+	$(CXX) -o $(program) $(cflags) $(objects) $(ldflags)
+
+%.o: %.cxx
+	$(CXX) $(cflags) -MD -MF .$*.d -c $*.cxx
+
+$(ppdfiles): %.ppd: %.ppd.in
+	sed -e 's%@@CUPS_FILTER@@%$(filterdir)/$(program)%' < $@.in > $@
+
+install: build
+	cp $(program) "$(filterdir)/"
+	mkdir -p "$(ppddir)"
+	gzip -c siislppro.ppd > "$(ppddir)/siislppro.ppd.gz"
+	gzip -c siislp100.ppd > "$(ppddir)/siislp100.ppd.gz"
+	gzip -c siislp200.ppd > "$(ppddir)/siislp200.ppd.gz"
+	gzip -c siislp240.ppd > "$(ppddir)/siislp240.ppd.gz"
+	gzip -c siislp440.ppd > "$(ppddir)/siislp440.ppd.gz"
+	gzip -c siislp450.ppd > "$(ppddir)/siislp450.ppd.gz"
+	gzip -c siislp620.ppd > "$(ppddir)/siislp620.ppd.gz"
+	gzip -c siislp650.ppd > "$(ppddir)/siislp650.ppd.gz"
 
 uninstall:
 	rm -rfv "$(ppddir)"
 	rm -rfv "$(filterdir)/$(program)"
 
 clean:
-	rm -f $(program) *.o *~
+	rm -f $(program) $(objects) *~
 	rm -f *.gz
-
-clobber:
-	rm -rf "$(ppddir)"
 	rm -rf "$(mfdir)/pretty"
 
-archive:
-	make clean
+archive: clean
 	rm -f "$(mfdir)/../SeikoSLPLinuxDriver.zip"
 	ditto -c -k --keepParent "$(mfdir)" "$(mfdir)/../SeikoSLPLinuxDriver.zip"
 	
@@ -91,7 +79,6 @@ test203:
 
 pretty:
 	# pretty up the source code files using bcpp.  (C++ compatible pretty printer.)
-	make clean
 	mkdir "$(mfdir)/pretty"
 	mv *.h "$(mfdir)/pretty/"
 	mv *.cxx "$(mfdir)/pretty/"
@@ -104,6 +91,8 @@ pretty:
 	bcpp "$(mfdir)/pretty/DriverUtils.cxx" "$(mfdir)/DriverUtils.cxx"
 	bcpp "$(mfdir)/pretty/SeikoInstrumentsVendorID.h" "$(mfdir)/SeikoInstrumentsVendorID.h"
 	rm -rf "$(mfdir)/pretty"
+
+-include $(depends)
 	
 #
 # End of "$Id: makefile,v 1.6 Selznick$"
