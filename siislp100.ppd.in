@@ -33,45 +33,45 @@
 *OpenUI *PageSize/Media Size: PickOne
 *OrderDependency: 10 AnySetup *PageSize
 *DefaultPageSize: AddressSmall
-*PageSize 35mmSlide/35mm Slide (SLP-35L): "<</PageSize[26 104]/ImagingBBox null>>setpagedevice"
 *PageSize 8mmSpine/8mm Spine (SLP-27210): "<</PageSize[187 26]/ImagingBBox null>>setpagedevice"
+*PageSize 35mmSlide/35mm Slide (SLP-35L): "<</PageSize[26 104]/ImagingBBox null>>setpagedevice"
 *PageSize AddressSmall/Address - Small (SLP-1RL, SLP-2RL): "<</PageSize[236 68]/ImagingBBox null>>setpagedevice"
 *PageSize FileFolder/File Folder (SLP-FLW): "<</PageSize[230 37]/ImagingBBox null>>setpagedevice"
 *PageSize MultiPurpose/Multi-Purpose (SLP-MRL): "<</PageSize[126 68]/ImagingBBox null>>setpagedevice"
-*PageSize VHSSpine/VHS Spine (SLP-VSL): "<</PageSize[400 50]/ImagingBBox null>>setpagedevice"
-*PageSize Round/Round (SLP-RND): "<</PageSize[62 68]/ImagingBBox null>>setpagedevice"
 *PageSize Return/Return (SLP-RTN): "<</PageSize[122 45]/ImagingBBox null>>setpagedevice"
+*PageSize Round/Round (SLP-RND): "<</PageSize[62 68]/ImagingBBox null>>setpagedevice"
+*PageSize VHSSpine/VHS Spine (SLP-VSL): "<</PageSize[400 50]/ImagingBBox null>>setpagedevice"
 *CloseUI: *PageSize
 *OpenUI *PageRegion/Media Size: PickOne
 *OrderDependency: 10 AnySetup *PageRegion
 *DefaultPageRegion: AddressSmall
-*PageRegion 35mmSlide/35mm Slide (SLP-35L): "<</PageSize[26 104]/ImagingBBox null>>setpagedevice"
 *PageRegion 8mmSpine/8mm Spine (SLP-27210): "<</PageSize[187 26]/ImagingBBox null>>setpagedevice"
+*PageRegion 35mmSlide/35mm Slide (SLP-35L): "<</PageSize[26 104]/ImagingBBox null>>setpagedevice"
 *PageRegion AddressSmall/Address - Small (SLP-1RL, SLP-2RL): "<</PageSize[236 68]/ImagingBBox null>>setpagedevice"
 *PageRegion FileFolder/File Folder (SLP-FLW): "<</PageSize[230 37]/ImagingBBox null>>setpagedevice"
 *PageRegion MultiPurpose/Multi-Purpose (SLP-MRL): "<</PageSize[126 68]/ImagingBBox null>>setpagedevice"
-*PageRegion VHSSpine/VHS Spine (SLP-VSL): "<</PageSize[400 50]/ImagingBBox null>>setpagedevice"
-*PageRegion Round/Round (SLP-RND): "<</PageSize[62 68]/ImagingBBox null>>setpagedevice"
 *PageRegion Return/Return (SLP-RTN): "<</PageSize[122 45]/ImagingBBox null>>setpagedevice"
+*PageRegion Round/Round (SLP-RND): "<</PageSize[62 68]/ImagingBBox null>>setpagedevice"
+*PageRegion VHSSpine/VHS Spine (SLP-VSL): "<</PageSize[400 50]/ImagingBBox null>>setpagedevice"
 *CloseUI: *PageRegion
 *DefaultImageableArea: AddressSmall
-*ImageableArea 35mmSlide/35mm Slide (SLP-35L): "0 0 25.920001983643 103.68000793457"
 *ImageableArea 8mmSpine/8mm Spine (SLP-27210): "0 0 187.199996948242 25.920001983643"
+*ImageableArea 35mmSlide/35mm Slide (SLP-35L): "0 0 25.920001983643 103.68000793457"
 *ImageableArea AddressSmall/Address - Small (SLP-1RL, SLP-2RL): "0 0 236.160003662109 68.400001525879"
 *ImageableArea FileFolder/File Folder (SLP-FLW): "0 0 230.400009155273 37.439998626709"
 *ImageableArea MultiPurpose/Multi-Purpose (SLP-MRL): "0 0 126 68.400001525879"
-*ImageableArea VHSSpine/VHS Spine (SLP-VSL): "0 0 399.600006103516 50.399997711182"
-*ImageableArea Round/Round (SLP-RND): "0 0 61.920001983643 68.040000915527"
 *ImageableArea Return/Return (SLP-RTN): "0 0 122.400001525879 45"
+*ImageableArea Round/Round (SLP-RND): "0 0 61.920001983643 68.040000915527"
+*ImageableArea VHSSpine/VHS Spine (SLP-VSL): "0 0 399.600006103516 50.399997711182"
 *DefaultPaperDimension: AddressSmall
-*PaperDimension 35mmSlide/35mm Slide (SLP-35L): "25.920001983643 103.68000793457"
 *PaperDimension 8mmSpine/8mm Spine (SLP-27210): "187.199996948242 25.920001983643"
+*PaperDimension 35mmSlide/35mm Slide (SLP-35L): "25.920001983643 103.68000793457"
 *PaperDimension AddressSmall/Address - Small (SLP-1RL, SLP-2RL): "236.160003662109 68.400001525879"
 *PaperDimension FileFolder/File Folder (SLP-FLW): "230.400009155273 37.439998626709"
 *PaperDimension MultiPurpose/Multi-Purpose (SLP-MRL): "126 68.400001525879"
-*PaperDimension VHSSpine/VHS Spine (SLP-VSL): "399.600006103516 50.399997711182"
-*PaperDimension Round/Round (SLP-RND): "61.920001983643 68.040000915527"
 *PaperDimension Return/Return (SLP-RTN): "122.400001525879 45"
+*PaperDimension Round/Round (SLP-RND): "61.920001983643 68.040000915527"
+*PaperDimension VHSSpine/VHS Spine (SLP-VSL): "399.600006103516 50.399997711182"
 *MaxMediaWidth: "526.320007324219"
 *MaxMediaHeight: "136.223999023438"
 *HWMargins: 0 0 0 0
