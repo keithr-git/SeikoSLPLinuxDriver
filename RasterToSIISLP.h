@@ -49,7 +49,7 @@ int     main(int argc, char *argv[]);
 
 #define DEBUG_FUNC  { fprintf(stderr, "S3: %s\n", __PRETTY_FUNCTION__); fflush(stderr); }
 #define DEBUG_LINE  { fprintf(stderr, "S3: %s line is = %d\n", __PRETTY_FUNCTION__, __LINE__); fflush(stderr); }
-#define DEBUG_S(S_) { fprintf(stderr, "S3: %s line %d, %s\n", __PRETTY_FUNCTION__, __LINE__, S_); fflush(stderr); }
+#define DEBUG_S(S_, ...) { fprintf(stderr, "S3: %s line %d, " S_ "\n", __PRETTY_FUNCTION__, __LINE__, ## __VA_ARGS__); fflush(stderr); }
 
 /*
  * End of "$Id: RasterToSIISLP.h,v 1.6 Selznick$"

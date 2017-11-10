@@ -221,10 +221,7 @@ void PreparePrinter()
 
 		gPrinterModel = ppdFile->model_number;
 
-		char debug[128];
-		sprintf(debug, "model_number is %d", ppdFile->model_number);
-		DEBUG_S(debug);
-
+		DEBUG_S("model_number is %d", ppdFile->model_number);
 		ppdClose(ppdFile);
 	}
 
