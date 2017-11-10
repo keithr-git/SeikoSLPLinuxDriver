@@ -646,7 +646,7 @@ int main(int argc, char *argv[])
 			PageToBitmap(pageNum, ras, header, bm);
 
 			/*  rotate to "landscape" */
-			//BitMapRotate90(bm, bm);
+			BitMapRotate90(bm, bm);
 
 			SIISLPProcessBitmap processor(gPrinterModel);
 
