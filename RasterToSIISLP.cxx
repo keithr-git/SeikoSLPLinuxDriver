@@ -113,9 +113,6 @@ int ComputeIndent(cups_page_header2_t &header)
 	switch (gPrinterModel)
 	{
 		case kSeikoInstrumentsSLPProProductID:
-			/*  7.8 dots == 1 mm, 8 dots == 1 byte */
-			marginInMM = (int) ((marginInDots + 7) / 15.6);
-			break;
 		case kSeikoInstrumentsSLP100ProductID:
 		case kSeikoInstrumentsSLP200ProductID:
 		case kSeikoInstrumentsSLP240ProductID:
