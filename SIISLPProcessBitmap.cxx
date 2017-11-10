@@ -146,7 +146,9 @@ long SIISLPProcessBitmap::ProcessBitmap(long height, long width, long rowBytes, 
 			}
 		}
 
-		result = AdvanceLines(linesToAdvance);
+		Byte        topOfForm = SLP_CMD_FORMFEED;
+
+		result = FirstError(result, AppendBytes(&topOfForm, 1));
 	}
 
 	return result;
